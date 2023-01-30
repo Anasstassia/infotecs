@@ -15,7 +15,7 @@ const renderData = () => {
         `<tr class="row" data-id="${el.id}">
         <td>${el.firstName}</td>
         <td>${el.lastName}</td>
-        <td class="td_about">${el.about}</td>
+        <td class="td_about col">${el.about}</td>
         <td>${el.eyeColor}</td>
         </tr>`
     ).join('');
@@ -49,14 +49,12 @@ const renderEditForm = () => {
     const closeButton = favDialog.querySelector('#close');
     const saveButton = favDialog.querySelector('#save');
 
-
     tBody.addEventListener('click', (event) => {
         const idRow = event.target.parentNode.getAttribute('data-id');
         favDialog.showModal();
         setCurrentId(idRow);
         fillForm();
     });
-
 
       closeButton.addEventListener("click", () => {
         favDialog.close("animalNotChosen");
@@ -90,6 +88,9 @@ const sortTable = (key) => {
     state.sort((a, b) => a[key] > b[key] ? 1 : -1);
 };
 
+renderTable();
+renderEditForm();
+
 const selectsBtns = document.querySelectorAll('#select');
 
 selectsBtns.forEach((el) => el.addEventListener('change', (event) => {
@@ -108,4 +109,38 @@ const setCurrentId = (id) => {
     state.currentId = id;
 };
 
-renderTable();
+const fillForm = () => {
+    const nameInput = document.querySelector('#update-name');
+    const surnameInput = document.querySelector('#update-surname');
+    const aboutInput = document.querySelector('#update-about');
+    const colorInput = document.querySelector('#update-eyeColor');
+
+    nameInput.value = state.find((e) => e.id === state.currentId)?.firstName || '';
+    surnameInput.value = state.find((e) => e.id === state.currentId)?.lastName || '';
+    aboutInput.value = state.find((e) => e.id === state.currentId)?.about || '';
+    colorInput.value = state.find((e) => e.id === state.currentId)?.eyeColor || '';
+}
+
+const handleRowEdit = () => {
+    const editForm = document.getElementById('edit');
+    editForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nameValue = document.querySelector('#update-name')?.value;
+        const lastNameValue = document.querySelector('#update-surname')?.value;
+        const aboutValue = document.querySelector('#update-about')?.value;
+        const colorValue = document.querySelector('#update-eyeColor')?.value;
+        
+        updateRowData(nameValue, lastNameValue, aboutValue, colorValue);
+        renderData();
+    });
+};
+
+const updateRowData = (firstName, lastName, about, eyeColor) => {
+    state.forEach((el,id) => {
+        if (el.id === state.currentId) {
+            state[id] = {...el, firstName, lastName, about, eyeColor}
+        }
+    });
+};
+
+handleRowEdit();
