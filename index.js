@@ -21,6 +21,52 @@ const renderData = () => {
     ).join('');
 };
 
+const renderEditForm = () => {
+    const html1 = `
+    <dialog id="favDialog">
+        <div class="form">
+            <form method="dialog" class="edit-form" id="edit">
+                <div>
+                    <input class="form-input" placeholder="Имя" id="update-name"></input>
+                    <input class="form-input" placeholder="Фамилия" id="update-surname"></input>
+                    <input class="form-input" placeholder="Описание" id="update-about"></input>
+                    <input class="form-input" placeholder="Цвет глаз" id="update-eyeColor"></input>
+                </div>
+                <div>
+                    <button class="btn" id="close" value="cancel">Отменить</button>
+                    <button class="btn" id="save" value="default" type="submit">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </dialog>`;
+
+    const div = document.createElement('div');
+    div.innerHTML = html1;
+    document.body.append(div);
+
+    const tBody = document.querySelector('#tbody');
+    const favDialog = document.getElementById('favDialog');
+    const closeButton = favDialog.querySelector('#close');
+    const saveButton = favDialog.querySelector('#save');
+
+
+    tBody.addEventListener('click', (event) => {
+        const idRow = event.target.parentNode.getAttribute('data-id');
+        favDialog.showModal();
+        setCurrentId(idRow);
+        fillForm();
+    });
+
+
+      closeButton.addEventListener("click", () => {
+        favDialog.close("animalNotChosen");
+    });
+
+      saveButton.addEventListener("click", () => {
+      favDialog.close("animalNotChosen");
+    });
+};
+
 const renderTable = () => {
     const html = `
         <table class="table" cellspacing="0" border="0" cellpadding="0">

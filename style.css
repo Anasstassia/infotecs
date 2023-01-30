@@ -14,17 +14,16 @@ body {
 }
 
 .table {
-    margin: auto;
+    margin: 35px auto 20px auto;
 	width: 50%;
 	border: none;
-	margin-bottom: 20px;
     text-align: center;
 }
 .table thead th {
 	font-weight: bold;
 	text-align: center;
 	border: none;
-	padding: 10px 15px;
+	padding: 10px 2px;
 	background: #f3f3f3;
 }
 .table thead tr th:first-child {
@@ -72,4 +71,72 @@ body {
     width: 23px;
 	padding: 3px;
     border-radius: 10px;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	padding: 20px;
+	justify-content: space-around;
+    align-items: center;
+	height: 180px;
+    background: rgb(101 101 101 / 27%);
+}
+
+.form-input {
+	padding: 10px;
+	border:0;
+	box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+	border-radius:10px;
+}
+
+input, textarea {
+	font-family:inherit;
+    font-size: 16px;
+}
+
+.btn {
+	padding: 0 20px;
+	margin: 0 15px 15px 0;
+	outline: none;
+	border: none;  
+	border-radius: 6px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 17px;
+	font-weight: 600;
+	text-decoration: none;
+	color: #385898;
+	background-color: #e7f3ff;
+	cursor: pointer;
+	user-select: none;
+	appearance: none;
+	touch-action: manipulation;
+}
+
+.btn:focus-visible {
+	box-shadow: 0 0 0 2px #666;
+}
+
+.btn:hover {
+	background-color: #DBE7F2;
+}
+
+.edit-form {
+	display: contents;
+}
+
+dialog::backdrop {
+	background: rgb(55 47 47 / 47%);
+}
+
+#favDialog {
+	border-radius: 18px;
+	border: none;
+	margin: auto;
+}
+
+.col {
+	width: 400px;
 }
