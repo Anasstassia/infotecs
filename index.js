@@ -40,4 +40,26 @@ const renderTable = () => {
     renderData();
 };
 
+const sortTable = (key) => {
+    state.sort((a, b) => a[key] > b[key] ? 1 : -1);
+};
+
+const selectsBtns = document.querySelectorAll('#select');
+
+selectsBtns.forEach((el) => el.addEventListener('change', (event) => {
+    const key = event.target.getAttribute('data-key');
+    const option = event.target.value;
+    if (option === 'increase') {
+        sortTable(key);
+    } else if (option === 'decrease') {
+        sortTable(key);
+        state.reverse();
+    }
+    renderData();
+}));
+
+const setCurrentId = (id) => {
+    state.currentId = id;
+};
+
 renderTable();
