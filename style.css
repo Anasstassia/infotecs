@@ -140,3 +140,28 @@ dialog::backdrop {
 .col {
 	width: 400px;
 }
+
+.previous,
+.next {
+    margin: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 15px;
+    background-color: #8eedd18a;
+    width: 90px;
+    height: 40px;
+    border-radius: 7px;
+    border: 2px solid rgb(76 145 128 / 69%);
+}
+
+.previous:hover,
+.next:hover {
+    background-color: #66bca28a;
+}
+
+.buttons {
+	display: flex;
+	justify-content: center;
+	margin: 20px;
+}
