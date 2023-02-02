@@ -34,6 +34,11 @@ export const applyButtonsEventListeners = () => {
     })
 }
 
+// const setEyeColors = (el) => `
+// <div style=></div>
+// `
+//     el.style.backgroundColor = '#d3d3d3'
+
 
 
 export { renderStateData, createTable }

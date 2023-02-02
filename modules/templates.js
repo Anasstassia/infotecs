@@ -1,3 +1,5 @@
+import { COLORS } from './constants.js'
+
 const selectElementTemplate = (key) => `
     <select name="options" data-key="${key}" id="select">
         <option value="none">-Выбрать-</option>
@@ -6,12 +8,11 @@ const selectElementTemplate = (key) => `
         <option value="hide">Скрыть столбец</option>
     </select>`;
 
-
 const tableRowTemplate = (el) => `<tr class="row" data-id="${el.id}">
         <td>${el.firstName}</td>
         <td>${el.lastName}</td>
         <td class="td_about col">${el.about}</td>
-        <td>${el.eyeColor}</td>
+        <td>${el.eyeColor}<div style="background-color:${COLORS[el.eyeColor]}"class="color"></div></td>
         </tr>`
 
 const tableBodyTemplate = () => `

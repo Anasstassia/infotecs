@@ -5,9 +5,9 @@ let state = {
 
 const createState = (data) => {
     state.data = data.map(el => ({ ...el, firstName: el.name.firstName, lastName: el.name.lastName }));
-}
+};
 
- const setCurrentId = (id) => {
+const setCurrentId = (id) => {
     state.currentId = id;
 };
 
@@ -25,6 +25,6 @@ const sortDataByKey = (key) => {
 
 const getCurrentRow = () => {
     return state.data.find((e) => e.id === state.currentId)
-}
+};
 
 export {state, createState, setCurrentId, updateRowData, sortDataByKey, getCurrentRow}

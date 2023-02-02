@@ -1,6 +1,4 @@
 import {
-    COLORS, 
-    ROWS_PER_PAGE, 
     createState, 
     createTable,
     createEditForm,
