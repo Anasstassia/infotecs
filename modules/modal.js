@@ -1,4 +1,4 @@
-import { setCurrentId, state, updateRowData, getCurrentRow } from "./state.js";
+import { setCurrentId, updateRowData, getCurrentRow } from "./state.js";
 import {modalTemplate} from './templates.js';
 import {renderStateData} from './table.js';
 

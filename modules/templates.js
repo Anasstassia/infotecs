@@ -1,5 +1,27 @@
 import { COLORS } from './constants.js'
 
+const checkboxElement = () => `
+    <form>
+       <p>Выберите, какие столбцы скрыть</p>
+        <label>
+            <input type="checkbox" value="firstName">
+            Имя
+        </label>
+        <label>
+            <input type="checkbox" value="lastName">
+            Фамилия
+        </label>
+        <label>
+            <input type="checkbox" value="about">
+            Описание
+        </label>
+        <label>
+            <input type="checkbox" value="eyeColor">
+            Цвет глаз
+        </label>
+    </form>
+`;
+
 const selectElementTemplate = (key) => `
     <select name="options" data-key="${key}" id="select">
         <option value="none">-Выбрать-</option>
@@ -9,10 +31,10 @@ const selectElementTemplate = (key) => `
     </select>`;
 
 const tableRowTemplate = (el) => `<tr class="row" data-id="${el.id}">
-        <td>${el.firstName}</td>
-        <td>${el.lastName}</td>
-        <td class="td_about col">${el.about}</td>
-        <td>${el.eyeColor}<div style="background-color:${COLORS[el.eyeColor]}"class="color"></div></td>
+        <td class="${!el.firstName && 'hide'}">${el.firstName}</td>
+        <td class="${!el.lastName && 'hide'}">${el.lastName}</td>
+        <td class="td_about col ${!el.about && 'hide'}">${el.about}</td>
+        <td class="${!el.eyeColor && 'hide'}">${el.eyeColor}<div style="background-color:${COLORS[el.eyeColor]}"class="color"></div></td>
         </tr>`
 
 const tableBodyTemplate = () => `
@@ -46,4 +68,4 @@ const modalTemplate = () => `
         </div>
     </dialog>`
 
-export {tableBodyTemplate, tableRowTemplate, modalTemplate}
+export { tableBodyTemplate, tableRowTemplate, modalTemplate, checkboxElement }

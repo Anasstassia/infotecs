@@ -2,7 +2,7 @@ import { tableRowTemplate, tableBodyTemplate } from "./templates.js";
 import { sortDataByKey, state } from './state.js'
 
 const renderStateData = () => {
-    document.querySelector('#tbody').innerHTML = state.data.map((el) =>
+    document.querySelector('#tbody').innerHTML = state.currentData.map((el) =>
         tableRowTemplate(el)
     ).join('');
 };
@@ -15,7 +15,7 @@ const createTable = () => {
     renderStateData();
 };
 
-export const applyButtonsEventListeners = () => {
+const applyButtonsEventListeners = () => {
     const selectsBtns = document.querySelectorAll('#select');
 
     selectsBtns.forEach((el) => {
@@ -34,11 +34,4 @@ export const applyButtonsEventListeners = () => {
     })
 }
 
-// const setEyeColors = (el) => `
-// <div style=></div>
-// `
-//     el.style.backgroundColor = '#d3d3d3'
-
-
-
-export { renderStateData, createTable }
+export { renderStateData, createTable, applyButtonsEventListeners }
