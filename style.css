@@ -27,12 +27,6 @@ body {
 	background: #f3f3f3;
 }
 
-/* .table thead tr > th {
-	border-radius: 8px;
-} */
-/* .table thead tr th:last-child {
-	border-radius: 0 8px 8px 0;
-}  */
 .table tbody td {
 	text-align: left;
 	border: none;
@@ -184,11 +178,9 @@ dialog::backdrop {
 .hide {
 	display: none;
 }
-
-/* tbody {
-	border-radius: 4px;
-    box-shadow: 0 0 1px #000;
-} */
+.show {
+	display: table-cell;
+}
 
 label {
 	margin: 0 8px;

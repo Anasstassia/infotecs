@@ -1,4 +1,4 @@
-import { COLORS } from './constants.js'
+import { COLORS } from './constants.js';
 
 const checkboxElement = () => `
     <form>
@@ -27,28 +27,27 @@ const selectElementTemplate = (key) => `
         <option value="none">-Выбрать-</option>
         <option value="increase">Сортировка от А до Я</option>
         <option value="decrease">Сортировка от Я до А</option>
-        <option value="hide">Скрыть столбец</option>
     </select>`;
 
 const tableRowTemplate = (el) => `<tr class="row" data-id="${el.id}">
-        <td class="${!el.firstName && 'hide'}">${el.firstName}</td>
-        <td class="${!el.lastName && 'hide'}">${el.lastName}</td>
-        <td class="td_about col ${!el.about && 'hide'}">${el.about}</td>
-        <td class="${!el.eyeColor && 'hide'}">${el.eyeColor}<div style="background-color:${COLORS[el.eyeColor]}"class="color"></div></td>
-        </tr>`
+        <td data-key="firstName">${el.firstName}</td>
+        <td data-key="lastName">${el.lastName}</td>
+        <td class="td_about col" data-key="about">${el.about}</td>
+        <td data-key="eyeColor">${el.eyeColor}<div style="background-color:${COLORS[el.eyeColor]}"class="color"></div></td>
+        </tr>`;
 
 const tableBodyTemplate = () => `
         <table class="table" cellspacing="0" border="0" cellpadding="0">
-        <thead>
-        <th>Имя ${selectElementTemplate('firstName')}</th>
-        <th>Фамилия ${selectElementTemplate('lastName')}</th>
-        <th>Описание ${selectElementTemplate('about')}</th>
-        <th>Цвет глаз ${selectElementTemplate('eyeColor')}</th>
-        </thead>
-        <tbody id="tbody">
-        </tbody>
+            <thead>
+                <th class="firstName">Имя ${selectElementTemplate('firstName')}</th>
+                <th class="lastName">Фамилия ${selectElementTemplate('lastName')}</th>
+                <th class="about">Описание ${selectElementTemplate('about')}</th>
+                <th class="eyeColor">Цвет глаз ${selectElementTemplate('eyeColor')}</th>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
         </table>
-    `
+    `;
 
 const modalTemplate = () => `
     <dialog id="favDialog">
@@ -66,6 +65,6 @@ const modalTemplate = () => `
                 </div>
             </form>
         </div>
-    </dialog>`
+    </dialog>`;
 
 export { tableBodyTemplate, tableRowTemplate, modalTemplate, checkboxElement }

@@ -1,10 +1,12 @@
 import { tableRowTemplate, tableBodyTemplate } from "./templates.js";
-import { sortDataByKey, state } from './state.js'
+import { sortDataByKey, state } from './state.js';
+import { VALUES } from "./constants.js";
 
 const renderStateData = () => {
     document.querySelector('#tbody').innerHTML = state.currentData.map((el) =>
         tableRowTemplate(el)
     ).join('');
+    showColumns();
 };
 
 const createTable = () => {
@@ -27,11 +29,22 @@ const applyButtonsEventListeners = () => {
             }
             if (option === 'decrease') {
                 sortDataByKey(key);
-                state.data.reverse();
+                state.currentData.reverse();
             }
             renderStateData();
+        });
+    });
+};
+
+const showColumns = () => {
+    VALUES.forEach((el) =>  document.querySelector(`.${el}`).classList.remove('hide'));
+    const keys = state.hideColumns.map(i => VALUES[i]);
+    keys.forEach((col) => {
+        document.querySelector(`.${col}`).classList.add('hide');
+        document.querySelectorAll(`[data-key="${col}"]`).forEach((el) => {
+            el.classList.add('hide');
         })
-    })
-}
+    });
+};
 
 export { renderStateData, createTable, applyButtonsEventListeners }

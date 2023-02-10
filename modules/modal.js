@@ -14,7 +14,7 @@ const fillForm = () => {
     surnameInput.value = lastName;
     aboutInput.value = about;
     colorInput.value = eyeColor;
-}
+};
 
 
 const applyModalEventListeners = () => {
@@ -50,15 +50,13 @@ const applyModalEventListeners = () => {
       favDialog.close();
     });
 
-}
+};
 
 const createEditForm = () => {
     const template = modalTemplate();
-
     const div = document.createElement('div');
     div.innerHTML = template;
     document.body.append(div);
 };
 
-
-export {applyModalEventListeners, createEditForm}
+export { applyModalEventListeners, createEditForm }
