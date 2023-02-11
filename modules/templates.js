@@ -1,5 +1,6 @@
 import { COLORS } from './constants.js';
 
+//хранение шаблонов верстки для удобного использования
 const checkboxElement = () => `
     <form>
        <p>Выберите, какие столбцы скрыть</p>
@@ -19,8 +20,7 @@ const checkboxElement = () => `
             <input type="checkbox" value="eyeColor">
             Цвет глаз
         </label>
-    </form>
-`;
+    </form>`;
 
 const selectElementTemplate = (key) => `
     <select name="options" data-key="${key}" id="select">
@@ -46,8 +46,7 @@ const tableBodyTemplate = () => `
             </thead>
             <tbody id="tbody">
             </tbody>
-        </table>
-    `;
+        </table>`;
 
 const modalTemplate = () => `
     <dialog id="favDialog">

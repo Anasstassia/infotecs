@@ -2,6 +2,7 @@ import { checkboxElement } from "./templates.js";
 import { state } from "./state.js";
 import { renderStateData } from "./table.js";
 
+// создание блока с чекбоксами для скрытия колонок
 const createCheckbox = () => {
     const html = checkboxElement();
     const div = document.createElement('div');
@@ -9,8 +10,10 @@ const createCheckbox = () => {
     div.classList.add('checkbox');
     document.body.prepend(div);
     selectColumn();
-}
+};
 
+/* функция, которая при выборе нужной колонки, формирует массив индексов скрытых колонок
+и на этой основе перерисовывает таблицу */ 
 function selectColumn() {
     const columnsOptions = document.querySelectorAll('.checkbox input');
     columnsOptions.forEach((input, i) => {
@@ -25,4 +28,4 @@ function selectColumn() {
     });
 };
 
-export {createCheckbox}
+export { createCheckbox }

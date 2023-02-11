@@ -2,13 +2,15 @@ import { tableRowTemplate, tableBodyTemplate } from "./templates.js";
 import { sortDataByKey, state } from './state.js';
 import { VALUES } from "./constants.js";
 
+// получение строковых представлений данных для всех строк таблицы, с учетом выбора скрытых колонок
 const renderStateData = () => {
-    document.querySelector('#tbody').innerHTML = state.currentData.map((el) =>
+    document.querySelector('#tbody').innerHTML = state.data.map((el) =>
         tableRowTemplate(el)
     ).join('');
     showColumns();
 };
 
+// создание таблицы с помощью шаблона верстки, отображение строк таблицы
 const createTable = () => {
     const html = tableBodyTemplate();
     const div = document.createElement('div');
@@ -17,6 +19,8 @@ const createTable = () => {
     renderStateData();
 };
 
+/* добавление слушателей событий для всех элементов select и при выборе 
+какого-либо из вариантов происходит сортировка данных, затем перерисовывание таблицы */
 const applyButtonsEventListeners = () => {
     const selectsBtns = document.querySelectorAll('#select');
 
@@ -29,13 +33,15 @@ const applyButtonsEventListeners = () => {
             }
             if (option === 'decrease') {
                 sortDataByKey(key);
-                state.currentData.reverse();
+                state.data.reverse();
             }
             renderStateData();
         });
     });
 };
 
+// функция отображает только те колонки, которые хочет пользователь
+// для всех по умолчанию убирается класс hide, и он же добавляется только тем, которые есть в массиве с номерами скрытых колонок
 const showColumns = () => {
     VALUES.forEach((el) =>  document.querySelector(`.${el}`).classList.remove('hide'));
     const keys = state.hideColumns.map(i => VALUES[i]);
